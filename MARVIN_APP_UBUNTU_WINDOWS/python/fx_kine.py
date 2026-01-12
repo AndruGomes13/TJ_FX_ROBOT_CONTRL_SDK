@@ -1,6 +1,7 @@
 from ctypes import *
 import ctypes
 import inspect
+from pathlib import Path
 from textwrap import dedent
 import os
 import math
@@ -13,7 +14,8 @@ logger = logging.getLogger('debug_printer')
 logger.setLevel(logging.INFO)  # 一键关闭所有调试打印
 logger.setLevel(logging.DEBUG)  # 默认开启DEBUG级
 
-current_path = os.getcwd()
+current_path = Path(__file__).resolve().parent.parent
+
 
 
 # 定义基本类型

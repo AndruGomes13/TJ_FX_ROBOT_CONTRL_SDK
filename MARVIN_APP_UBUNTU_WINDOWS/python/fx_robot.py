@@ -1,11 +1,12 @@
 import ctypes
 import inspect
+from pathlib import Path
 from textwrap import dedent
 import os
 import re
 from typing import Union
 
-current_path=os.getcwd()
+current_path = Path(__file__).resolve().parent.parent
 
 def decimal_to_hex(number, prefix=False, upper=True, float_precision=8):
     """
