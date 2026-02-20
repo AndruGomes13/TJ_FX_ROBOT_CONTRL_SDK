@@ -1,11 +1,37 @@
+## Quick Install (Ubuntu CLI)
+
+To run Marvin GUI from anywhere in your terminal as `marvin-gui`, run the following from the **repo root**:
+
+```bash
+mkdir -p ~/.local/bin
+ln -sf "$(pwd)/MARVIN_APP_UBUNTU_WINDOWS/marvin-gui.sh" ~/.local/bin/marvin-gui
+```
+
+> **Note:** If `marvin-gui` is not found after installing, add `~/.local/bin` to your PATH:
+> ```bash
+> echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+> ```
+
+Then simply run:
+```bash
+marvin-gui
+```
+
+To uninstall:
+```bash
+rm ~/.local/bin/marvin-gui
+```
+
+---
+
 ## 最新APP版本1202
     底部增加机械臂错误码查询
     增加浮动基座参数计算功能
     稳定动力学参数和运动学参数设置保存到控制器功能,再次启动APP可显示上次保存数据
     末端CAN/485 可加多条协议指令
     支持电机内外编清零,电机编码器请错
-    
-    
+
+
 
 ## 你好使用MARVIN_APP软件前，需要温馨提示您：
 
@@ -75,5 +101,5 @@
 
 
 
-    
+
 
