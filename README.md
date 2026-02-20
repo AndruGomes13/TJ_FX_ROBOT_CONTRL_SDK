@@ -24,6 +24,48 @@ rm ~/.local/bin/marvin-gui
 
 ---
 
+## Building from Source
+
+If you make changes to the code (e.g. UI modifications) and need to rebuild the executable:
+
+### Prerequisites
+
+1. **Python 3** (any version)
+2. Ensure the shared libraries are in place:
+   - **Linux**: `libMarvinSDK.so` and `libKine.so` in `MARVIN_APP_UBUNTU_WINDOWS/python/`
+   - **Windows**: `libMarvinSDK.dll` and `*.dll` files in `MARVIN_APP_UBUNTU_WINDOWS/python/`
+
+### Setting up the virtual environment
+
+```bash
+cd MARVIN_APP_UBUNTU_WINDOWS
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Building the executable
+
+```bash
+source .venv/bin/activate
+python setup.py
+```
+
+The executable will be written to the **`dist/`** folder inside `MARVIN_APP_UBUNTU_WINDOWS/`:
+- **Linux**: `dist/MARVIN_APP-ubuntu2404-1111`
+- **Windows**: `dist/MARVIN_APP-1111.exe`
+
+You can then copy or distribute this single-file executable to machines that don't have Python installed.
+
+### Running from source (no build needed)
+
+```bash
+source .venv/bin/activate
+python UI_FX2.py
+```
+
+---
+
 ## 最新APP版本1202
     底部增加机械臂错误码查询
     增加浮动基座参数计算功能
