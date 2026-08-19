@@ -5221,6 +5221,9 @@ class App:
         else:
             messagebox.showerror("error", "Please connect to the robot first")
 
+    # (arm, axis) whose sensor reading is inverted vs. SensorOffset; default 1.0
+    SENSOR_OFFSET_SIGN = {("A", 5): -1.0}
+
     def set_sensor_offset(self, robot_id):  # todo
         if self.connected:
             if robot_id == "A":
@@ -5229,7 +5232,8 @@ class App:
                 re_flag, m_sk = robot.get_param(type="float", paraName=name_f)
                 if re_flag == 0:
                     print(f" *** get m_sk:{m_sk}")
-                    m_soft = float(self.get_offset_entry_1.get()) / m_sk
+                    m_sign = self.SENSOR_OFFSET_SIGN.get(("A", axis), 1.0)
+                    m_soft = m_sign * float(self.get_offset_entry_1.get()) / m_sk
                     print(f"**** set senor value:{m_soft}")
                     name_i = f"R.A0.L{axis}.BASIC.SensorOffset"
                     robot.set_param(type="int", paraName=name_i, value=m_soft)
@@ -5243,7 +5247,8 @@ class App:
                 re_flag, m_sk = robot.get_param(type="float", paraName=name_f)
                 if re_flag == 0:
                     print(f" *** get m_sk:{m_sk}")
-                    m_soft = float(self.get_offset_entry_2.get()) / m_sk
+                    m_sign = self.SENSOR_OFFSET_SIGN.get(("B", axis), 1.0)
+                    m_soft = m_sign * float(self.get_offset_entry_2.get()) / m_sk
                     print(f"**** set senor value:{m_soft}")
                     name_i = f"R.A1.L{axis}.BASIC.SensorOffset"
                     robot.set_param(type="int", paraName=name_i, value=m_soft)
